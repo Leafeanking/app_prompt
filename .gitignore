@@ -1,5 +1,4 @@
 *.sqlite3
-manage.py
 *.egg-info
 *.pot
 *.py[co]
