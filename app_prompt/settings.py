@@ -171,7 +171,7 @@ REST_FRAMEWORK = {
 
 
 CORS_ORIGIN_WHITELIST = [
-    'app-prompt.firebaseapp.com/',
+    'app-prompt.firebaseapp.com',
 ]
 
 if DEBUG:
