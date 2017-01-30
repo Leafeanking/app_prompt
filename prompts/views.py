@@ -24,6 +24,9 @@ class PromptViewSet(viewsets.ModelViewSet):
         serializer = PromptSerializer(queryset)
         return Response(serializer.data)
 
+    def perform_create(self, serializer):
+        serializer.save(creator=self.request.user)
+
 
 class UserList(ListAPIView):
     queryset = User.objects.all()
