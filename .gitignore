@@ -18,3 +18,4 @@ venv
 *.pyc
 staticfiles
 .env
+ext_secret_key.py

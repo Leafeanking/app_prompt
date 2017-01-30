@@ -21,12 +21,17 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '4xh29$07%uxow(9)@$rtmd=ntbkl(gb&2b=v#ti7e0v&-q%b(9'
+try:
+    from ext_secret_key import EXT_SECRET_KEY
+    SECRET_KEY = EXT_SECRET_KEY
+except:
+    SECRET_KEY = '4xh29$07%uxow(9)@$rtmd=ntbkl(gb&2b=v#ti7e0v&-q%b(9'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mysterious-dusk-73988.herokuapp.com']
 
 if DEBUG:
     ALLOWED_HOSTS += [
@@ -161,7 +166,12 @@ REST_FRAMEWORK = {
 }
 
 
-CORS_ORIGIN_WHITELIST = (
-    'localhost:8000',
-    'localhost:8080'
-)
+CORS_ORIGIN_WHITELIST = [
+    'https://app-prompt.firebaseapp.com/',
+]
+
+if DEBUG:
+    CORS_ORIGIN_WHITELIST += [
+        'localhost:8000',
+        'localhost:8080',
+    ]
